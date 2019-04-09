@@ -11,7 +11,5 @@ namespace Manager.Persistence.Repositories
         {
 
         }
-
-
     }
 }
