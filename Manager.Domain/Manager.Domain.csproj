@@ -7,8 +7,7 @@
   <ItemGroup>
     <Folder Include="Contracts\Response\" />
     <Folder Include="Contracts\Request\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Repositories\" />
+    <Folder Include="DTOs\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

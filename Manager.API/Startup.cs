@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace Manager.API
 {
@@ -22,13 +24,20 @@ namespace Manager.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(x =>
+                {
+                    x.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                    x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    x.SerializerSettings.Formatting = Formatting.Indented;
+                })
+                .AddFluentValidation();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
