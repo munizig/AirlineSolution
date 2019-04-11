@@ -1,0 +1,20 @@
+USE [Airline]
+GO
+
+/****** Object:  Table [dbo].[AirplaneModel]    Script Date: 4/9/2019 3:23:05 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AirplaneModel](
+	[Id] [smallint] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](20) NOT NULL,
+ CONSTRAINT [PK_AirplaneModel] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
