@@ -5,10 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Response\" />
     <Folder Include="Contracts\Request\" />
+    <Folder Include="Contracts\Response\" />
     <Folder Include="DTOs\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
 </Project>

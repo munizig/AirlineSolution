@@ -5,15 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.2.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Manager.Domain\Manager.Domain.csproj" />
+    <ProjectReference Include="..\Manager.Persistence\Manager.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
