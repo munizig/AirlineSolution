@@ -12,11 +12,11 @@ namespace Manager.API.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class AirplaneController : BaseController
+	public class AirplanesController : BaseController
 	{
 		public IAirplaneService AirplaneService { get; }
 
-		public AirplaneController(IAirplaneService airplaneService)
+		public AirplanesController(IAirplaneService airplaneService)
 		{
 			AirplaneService = airplaneService ??
 				throw new ArgumentNullException(nameof(airplaneService));
