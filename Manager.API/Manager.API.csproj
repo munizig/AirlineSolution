@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Manager.Application\Manager.Application.csproj" />
     <ProjectReference Include="..\Manager.Domain\Manager.Domain.csproj" />
+    <ProjectReference Include="..\Manager.Logger\Manager.Logger.csproj" />
     <ProjectReference Include="..\Manager.Persistence\Manager.Persistence.csproj" />
   </ItemGroup>
 

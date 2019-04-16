@@ -11,5 +11,7 @@ namespace Manager.Domain.Services
 		List<AirplaneContract> GetAll();
 		AirplaneContract GetById(Guid id);
 		void Update(AirplaneContract airplane);
-	}
+        AirplaneContract GetByCode(string code);
+
+    }
 }

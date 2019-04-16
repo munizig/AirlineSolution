@@ -6,20 +6,12 @@ namespace Manager.Persistence.Context
 {
     public partial class AirlineContext : DbContext
     {
-        public AirlineContext()
-        {
 
-        }
 
         public AirlineContext(DbContextOptions<AirlineContext> options)
             : base(options)
         {
         }
-
-        //public AirlineContext(IConfiguration configuration)
-        //{
-        //    Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-        //}
 
         public virtual DbSet<Airplane> Airplane { get; set; }
         public virtual DbSet<AirplaneModel> AirplaneModel { get; set; }

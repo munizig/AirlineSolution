@@ -1,80 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Manager.Domain.Contracts;
+﻿using Manager.Domain.Contracts;
 using Manager.Domain.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Net;
 
 namespace Manager.API.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class AirplanesController : BaseController
-	{
-		public IAirplaneService AirplaneService { get; }
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AirplanesController : BaseController
+    {
+        public IAirplaneService AirplaneService { get; }
 
-		public AirplanesController(IAirplaneService airplaneService)
-		{
-			AirplaneService = airplaneService ??
-				throw new ArgumentNullException(nameof(airplaneService));
-		}
+        public AirplanesController(IAirplaneService airplaneService)
+        {
+            AirplaneService = airplaneService ??
+                throw new ArgumentNullException(nameof(airplaneService));
+        }
 
-		// GET: api/Airplane
-		[HttpGet]
-		public IActionResult Get()
-		{
-			var result = AirplaneService.GetAll();
-			if(result != null)
-				return Ok(result);
+        // GET: api/Airplane
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var result = AirplaneService.GetAll();
+            if (result != null)
+                return Ok(result);
 
-			return NoContent();
-		}
+            return NoContent();
+        }
 
-		// GET: api/Airplane/5
-		[HttpGet("{id}", Name = "Get")]
-		public IActionResult Get(Guid id)
-		{
-			var result = AirplaneService.GetById(id);
-			if(result != null)
-				return Ok(result);
+        // GET: api/Airplane/5
+        [HttpGet("{id}", Name = "Get")]
+        public IActionResult Get(Guid id)
+        {
+            var result = AirplaneService.GetById(id);
+            if (result != null)
+                return Ok(result);
 
-			return NoContent();
-		}
+            return NoContent();
+        }
 
-		// POST: api/Airplane
-		[HttpPost]
-		public IActionResult Post([FromBody] AirplaneContract airplaneContract)
-		{
-			if(!ModelState.IsValid)
-				return BadRequest();
+        // POST: api/Airplane
+        [HttpPost]
+        public IActionResult Post([FromBody] AirplaneContract airplaneContract)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
 
-			var result = AirplaneService.Create(airplaneContract);
+                return Ok(AirplaneService.Create(airplaneContract));
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(
+                    new DefaultContractResponse(HttpStatusCode.BadRequest, ex.Message));
+            }
+        }
 
-			return Ok(result);
-		}
+        // PUT: api/Airplane/5
+        [HttpPut("{id}")]
+        public IActionResult Put([FromBody] AirplaneContract airplaneContract)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
 
-		// PUT: api/Airplane/5
-		[HttpPut("{id}")]
-		public IActionResult Put([FromBody] AirplaneContract airplaneContract)
-		{
-			if(!ModelState.IsValid)
-				return BadRequest();
+                AirplaneService.Update(airplaneContract);
 
-			AirplaneService.Update(airplaneContract);
+                return Ok(airplaneContract);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(
+                    new DefaultContractResponse(HttpStatusCode.BadRequest, ex.Message));
+            }
+        }
 
-			return Ok(airplaneContract);
-		}
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            AirplaneService.Delete(id);
 
-		// DELETE: api/ApiWithActions/5
-		[HttpDelete("{id}")]
-		public IActionResult Delete(Guid id)
-		{
-			AirplaneService.Delete(id);
-
-			return NoContent();
-		}
-	}
+            return NoContent();
+        }
+    }
 }
