@@ -1,17 +1,16 @@
-﻿using System;
+﻿using Manager.Domain.Contracts;
+using System;
 using System.Collections.Generic;
-using Manager.Domain.Contracts;
 
 namespace Manager.Domain.Services
 {
-	public interface IAirplaneService
-	{
-		AirplaneContract Create(AirplaneContract airplane);
-		void Delete(Guid id);
-		List<AirplaneContract> GetAll();
-		AirplaneContract GetById(Guid id);
-		void Update(AirplaneContract airplane);
-        AirplaneContract GetByCode(string code);
-
+    public interface IAirplaneService
+    {
+        AirplaneContractResponse GetById(Guid id);
+        List<AirplaneContractResponse> GetAll();
+        AirplaneContractResponse Create(AirplaneContractRequest airplane);
+        void Update(AirplaneContractRequest airplane);
+        void Delete(Guid id);
+        AirplaneContractResponse GetByCode(string code);
     }
 }

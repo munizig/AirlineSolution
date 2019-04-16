@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Manager.Domain.Contracts;
 using Manager.Domain.Entities;
+using System;
 
 namespace Manager.Application.AutoMapper
 {
@@ -8,8 +9,15 @@ namespace Manager.Application.AutoMapper
     {
         public AirplaneMappingProfile()
         {
-            CreateMap<Airplane, AirplaneContract>();
-            CreateMap<AirplaneContract, Airplane>();
+            CreateMap<Airplane, AirplaneContractResponse>();
+            CreateMap<AirplaneContractRequest, Airplane>()
+                .ConstructUsing(a => new Airplane()
+                {
+                    Id = a.Id,
+                    Code = a.Code,
+                    ModelId = a.ModelId,
+                    PassengersQuantity = a.PassengersQuantity
+                });
         }
     }
 }

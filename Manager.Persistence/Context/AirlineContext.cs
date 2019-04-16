@@ -45,6 +45,8 @@ namespace Manager.Persistence.Context
                     .HasForeignKey(d => d.ModelId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Airplane_AirplaneModel");
+
+                entity.Ignore(x => x.CreateDateLog);
             });
 
             modelBuilder.Entity<AirplaneModel>(entity =>

@@ -18,7 +18,6 @@ namespace Manager.API.Controllers
                 throw new ArgumentNullException(nameof(airplaneService));
         }
 
-        // GET: api/Airplane
         [HttpGet]
         public IActionResult Get()
         {
@@ -29,7 +28,6 @@ namespace Manager.API.Controllers
             return NoContent();
         }
 
-        // GET: api/Airplane/5
         [HttpGet("{id}", Name = "Get")]
         public IActionResult Get(Guid id)
         {
@@ -40,9 +38,8 @@ namespace Manager.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Airplane
         [HttpPost]
-        public IActionResult Post([FromBody] AirplaneContract airplaneContract)
+        public IActionResult Post([FromBody] AirplaneContractRequest airplaneContract)
         {
             try
             {
@@ -58,9 +55,8 @@ namespace Manager.API.Controllers
             }
         }
 
-        // PUT: api/Airplane/5
-        [HttpPut("{id}")]
-        public IActionResult Put([FromBody] AirplaneContract airplaneContract)
+        [HttpPut]
+        public IActionResult Put([FromBody] AirplaneContractRequest airplaneContract)
         {
             try
             {
@@ -78,9 +74,8 @@ namespace Manager.API.Controllers
             }
         }
 
-        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete([FromRoute] Guid id)
         {
             AirplaneService.Delete(id);
 
