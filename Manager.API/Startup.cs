@@ -54,6 +54,7 @@ namespace Manager.API
             RegisterCompression(services);
             RegisterDependencies(services);
             RegisterValidations(services);
+            RegisterCorsConfiguration(services);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -77,6 +78,8 @@ namespace Manager.API
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Airline API V1");
             });
+            app.UseCors("CorsPolicy");
+
         }
 
         private void RegisterDependencies(IServiceCollection services)
@@ -143,6 +146,18 @@ namespace Manager.API
                     "text/plain",
                     "image/svg+xml",
                 });
+            });
+        }
+
+        private void RegisterCorsConfiguration(IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
             });
         }
     }
