@@ -3,10 +3,7 @@
   <img src="https://ci.appveyor.com/api/projects/status/6c5d936mm77yoycn/branch/master?svg=true" />
 </a> 
 
-# Full App to manage Airplanes of a Airline company
-
-The system is able to manage airplanes of a airline company. Deleting, creating, updating and retrieving all of them.
-
+The Airline Management is an APP able to manage airplanes of a airlines companies. Deleting, creating, updating and retrieving them.
 
 
 ## How to use:
@@ -33,9 +30,18 @@ To know more about how to setup your enviroment visit the [Microsoft .NET Downlo
 
 - Domain Driven Design (Layers and Domain Model Pattern)
 - Repository and Generic Repository
+- Middleware managing exceptions and logging
 
-## News
+
+## News:
 
 **v1.0 - 04/16/2019**
 - First version docummented
 - All back end done
+
+
+## About the developer:
+The system was developed by me (and only me).
+If you would like to keep in touch, feel free to connect with me:
+www.linkedin.com/in/munizig
+
