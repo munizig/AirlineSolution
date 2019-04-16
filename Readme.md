@@ -41,7 +41,6 @@ To know more about how to setup your enviroment visit the [Microsoft .NET Downlo
 
 
 ## About the developer:
-The system was developed by me (and only me).
 If you would like to keep in touch, feel free to connect with me:
 www.linkedin.com/in/munizig
 
