@@ -3,7 +3,7 @@
   <img src="https://ci.appveyor.com/api/projects/status/6c5d936mm77yoycn/branch/master?svg=true" />
 </a> 
 
-The Airline Management is an APP able to manage airplanes of a airlines companies. Deleting, creating, updating and retrieving them.
+The Airline Management is an App to create and manage airplanes to airline companies. Deleting, creating, updating and retrieving them.
 
 
 ## How to use:
@@ -15,6 +15,7 @@ To know more about how to setup your enviroment visit the [Microsoft .NET Downlo
 
 ## Technologies implemented:
 
+#Back-end
 - ASP.NET Core 2.2 (with .NET Core 2.2)
 - ASP.NET WebApi Core
 - Entity Framework Core 2.2
@@ -26,9 +27,14 @@ To know more about how to setup your enviroment visit the [Microsoft .NET Downlo
 - Brotli Compression
 - Serilog
 
+#Front-end
+- Angular 6
+
+
 ## Architecture:
 
 - Domain Driven Design (Layers and Domain Model Pattern)
+- Dependency Injection
 - Repository and Generic Repository
 - Middleware managing exceptions and logging
 
