@@ -2,13 +2,13 @@ USE [master]
 GO
 
 /****** Object:  Database [Airline]    Script Date: 4/9/2019 3:21:59 AM ******/
-CREATE DATABASE [Airline]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Airline', FILENAME = N'C:\Users\Igor\Airline.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'Airline_log', FILENAME = N'C:\Users\Igor\Airline_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
-GO
+--CREATE DATABASE [Airline]
+-- CONTAINMENT = NONE
+-- ON  PRIMARY 
+--( NAME = N'Airline', FILENAME = N'C:\Airline.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+-- LOG ON 
+--( NAME = N'Airline_log', FILENAME = N'C:\Airline_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+--GO
 
 ALTER DATABASE [Airline] SET COMPATIBILITY_LEVEL = 130
 GO
