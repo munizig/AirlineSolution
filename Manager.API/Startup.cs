@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Manager.API.Configurations;
 using Manager.API.Middleware;
 using Manager.Application.AutoMapper;
 using Manager.Application.Logger;
 using Manager.Application.Services;
+using Manager.Application.Validations;
+using Manager.Domain.Contracts;
 using Manager.Domain.Repositories;
 using Manager.Domain.Services;
 using Manager.Logger;
@@ -19,6 +22,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Linq;
+using System.Net;
 
 namespace Manager.API
 {
@@ -49,7 +53,7 @@ namespace Manager.API
             RegisterEntityFramework(services);
             RegisterCompression(services);
             RegisterDependencies(services);
-
+            RegisterValidations(services);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -81,6 +85,22 @@ namespace Manager.API
 
             services.AddScoped<IAirplaneRepository, AirplaneRepository>();
             services.AddScoped<IAirplaneService, AirplaneService>();
+        }
+
+        private void RegisterValidations(IServiceCollection services)
+        {
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = (context) =>
+                {
+                    var errors = context.ModelState.Values.SelectMany(x => x.Errors.Select(p => p.ErrorMessage).Where(m => !string.IsNullOrWhiteSpace(m))).ToList();
+
+                    return new BadRequestObjectResult(
+                        new DefaultContractResponse(HttpStatusCode.BadRequest, errors != null ? errors[0].ToString() : string.Empty));
+                };
+            });
+
+            services.AddSingleton<IValidator<AirplaneContractRequest>, AirplaneValidator>();
         }
 
         private void RegisterSwagger(IServiceCollection services)

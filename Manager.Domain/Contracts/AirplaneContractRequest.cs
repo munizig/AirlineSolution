@@ -19,8 +19,9 @@ namespace Manager.Domain.Contracts
         [DisplayName("Model")]
         public short ModelId { get; set; }
 
-        [DisplayName("Passengers Qtt.")]
+        [DisplayName("Passengers quantity")]
         [Required(ErrorMessage = "The Passengers Quantity is required.")]
+        [Range(1, 999)]
         public short PassengersQuantity { get; set; }
     }
 }
