@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Airplane } from '../models/airplane.model';
 
 @Component({
   selector: 'app-grid-airplane',
@@ -10,7 +11,7 @@ export class GridAirplaneComponent implements OnInit {
   @Output() recordDeleted = new EventEmitter<any>();
   @Output() newClicked = new EventEmitter<any>();
   @Output() editClicked = new EventEmitter<any>();
-  @Input() airplaneData: Array<any>;
+  @Input() airplaneData: Array<Airplane>;
 
   constructor() { }
 

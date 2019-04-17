@@ -1,11 +1,13 @@
-<div class="row">
-  <div class="col-md-4">
-    <app-manage-airplane (airplaneCreated)="manageAirplane($event)" [airplaneInfo]="currentAirplane">
-    </app-manage-airplane>
-  </div>
-  <div class="col-md-4">
-    <app-grid-airplane [airplaneData]="airplaneData" (editClicked)="editClicked($event)"
-      (newClicked)="editClicked()" (recordDeleted)="deleteClicked($event)">
-    </app-grid-airplane>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <app-manage-airplane (airplaneCreated)="manageAirplane($event)" [airplaneInfo]="currentAirplane">
+      </app-manage-airplane>
+    </div>
+    <div class="col-md-8">
+      <app-grid-airplane [airplaneData]="airplaneData" (editClicked)="editClicked($event)" (newClicked)="editClicked()"
+        (recordDeleted)="deleteClicked($event)">
+      </app-grid-airplane>
+    </div>
   </div>
 </div>

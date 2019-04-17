@@ -11,8 +11,9 @@ export class Airplane {
         modelId: string,
         passengersQuantity: number,
         createDateLog: string) {
-            
+
         this.id = id;
+        this.code = code;    
         this.modelId = modelId;
         this.passengersQuantity = passengersQuantity;
         this.createDateLog = createDateLog;

@@ -5,3 +5,8 @@ table {
 tbody td {
     text-align: right;
 }
+
+.link {
+    text-decoration: underline;
+    cursor: pointer;
+}

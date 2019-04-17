@@ -15,7 +15,6 @@ export class ManageAirplaneComponent implements OnInit {
 
   constructor() {
     this.clearAirplaneInfo();
-    console.log(this.airplaneInfo);
   }
 
   ngOnInit() {
@@ -26,6 +25,7 @@ export class ManageAirplaneComponent implements OnInit {
   }
 
   public manageAirplaneRecord = function (event) {
+    debugger;
     this.airplaneCreated.emit(this.airplaneInfo);
     this.clearAirplaneInfo();
   }

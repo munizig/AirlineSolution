@@ -1,22 +1,24 @@
-<a href="#" id="btnNew">New</a>
-<table>
-  <thead>
+<h2>All Airplanes</h2>
+<button type="button" class="btn btn-primary" (click)="newRecord()">New</button>
+<table class="table">
+  <thead class="thead-light">
     <tr>
       <th>Code</th>
       <th>Model</th>
       <th>Passengers Qty.</th>
       <th>Created in</th>
+      <th>Options</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of airplaneList">
-      <td>{{item.Code}}</td>
-      <td>{{item.ModelId}}</td>
-      <td>{{item.PassengersQuantity | number:'1.0-0'}}</td>
-      <td>{{item.CreateDateLog | date:'shortDate'}}</td>
+    <tr *ngFor="let item of airplaneData">
+      <td>{{item.code}}</td>
+      <td>{{item.modelId}}</td>
+      <td>{{item.passengersQuantity | number:'1.0-0'}}</td>
+      <td>{{item.createDateLog | date:'shortDate'}}</td>
       <td>
-        <a href="#" (click)="editRecord(this)">Edit</a>
-        <a href="#" (click)="deleteRecord(this)">Delete</a>
+        <a href="#" (click)="editRecord(item)" class="link">Edit</a>&nbsp;
+        <a href="#" (click)="deleteRecord(item)" class="link">Delete</a>
       </td>
     </tr>
   </tbody>

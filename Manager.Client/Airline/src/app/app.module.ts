@@ -9,7 +9,6 @@ import { ManageAirplaneComponent } from './manage-airplane/manage-airplane.compo
 import { RouterModule, Routes } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { DecimalPipe, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import * as _ from 'lodash';
 
