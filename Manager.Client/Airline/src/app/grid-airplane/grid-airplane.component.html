@@ -1,23 +1,19 @@
-<p>
-  grid-airplane works!
-</p>
-
 <a href="#" id="btnNew">New</a>
 <table>
   <thead>
     <tr>
       <th>Code</th>
       <th>Model</th>
-      <th>Passengers Qtt.</th>
+      <th>Passengers Qty.</th>
       <th>Created in</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of airplaneList">
       <td>{{item.Code}}</td>
-      <td>{{item.Model}}</td>
-      <td>{{item.PassengersQtt | number:'1.0-0'}}</td>
-      <td>{{item.CreateDate | date:'shortDate'}}</td>
+      <td>{{item.ModelId}}</td>
+      <td>{{item.PassengersQuantity | number:'1.0-0'}}</td>
+      <td>{{item.CreateDateLog | date:'shortDate'}}</td>
       <td>
         <a href="#" (click)="editRecord(this)">Edit</a>
         <a href="#" (click)="deleteRecord(this)">Delete</a>

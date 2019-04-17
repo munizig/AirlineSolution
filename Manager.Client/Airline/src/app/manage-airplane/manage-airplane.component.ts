@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Airplane } from '../models/airplane.model';
 
 @Component({
   selector: 'app-manage-airplane',
@@ -8,7 +9,7 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 export class ManageAirplaneComponent implements OnInit {
 
   @Output() airplaneCreated = new EventEmitter<any>();
-  @Input() airplaneInfo: any;
+  @Input() airplaneInfo: Airplane;
 
   public buttonText = 'Save';
 
@@ -21,13 +22,7 @@ export class ManageAirplaneComponent implements OnInit {
   }
 
   private clearAirplaneInfo = function () {
-    this.airplaneInfo = {
-      id: undefined,
-      code: '',
-      model: '',
-      passengersQtt: 0,
-      createDate: ''
-    };
+    this.airplaneInfo = new Airplane(undefined, '', '', 0, '');
   }
 
   public manageAirplaneRecord = function (event) {

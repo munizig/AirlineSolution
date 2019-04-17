@@ -9,5 +9,6 @@ namespace Manager.Domain.Contracts
 		public string Code { get; set; }
 		public short ModelId { get; set; }
 		public short PassengersQuantity { get; set; }
+        public DateTime CreateDateLog { get; set; }
 	}
 }

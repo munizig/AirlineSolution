@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseService } from '../base.service';
 import * as _ from 'lodash';
+import { Airplane } from '../models/airplane.model';
 
-const url: string = 'airplane';
+const url: string = 'airplanes';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,16 @@ export class HomeComponent implements OnInit {
   public currentAirplane: any;
 
   constructor(private baseService: BaseService) {
-    baseService.get(url).subscribe((data: any) => this.airplaneData = data);
+    console.log('before call get');
+    const subscriber = baseService.get(url)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.airplaneData = data
+        subscriber.unsubscribe();
+      }, error => { 
+        console.log('error');
+      }
+      );
     this.currentAirplane = this.setInitialAirplaneValues();
   }
 
@@ -23,17 +33,11 @@ export class HomeComponent implements OnInit {
   }
 
   private setInitialAirplaneValues() {
-    return {
-      id: undefined,
-      code: '',
-      model: '',
-      passengersQtt: 0,
-      createDate: ''
-    }
+    return new Airplane(undefined, '', '', 0, '');
   }
 
   public manageAirplane = function (airplane: any) {
-    let airplaneExisting;
+    let airplaneExisting: any;
     airplaneExisting = _.find(this.airplaneData, (el => el.id === airplane.id));
 
     if (airplaneExisting) {

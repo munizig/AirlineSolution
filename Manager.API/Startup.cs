@@ -37,6 +37,8 @@ namespace Manager.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            RegisterCorsConfiguration(services);
+
             services
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
@@ -54,7 +56,6 @@ namespace Manager.API
             RegisterCompression(services);
             RegisterDependencies(services);
             RegisterValidations(services);
-            RegisterCorsConfiguration(services);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -68,6 +69,9 @@ namespace Manager.API
                 app.UseHsts();
             }
 
+            //app.UseCors("CorsPolicy");
+            app.UseCors("AllowAnyOrigin");
+
             app.UseMiddleware<JsonUnhandledExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseResponseCompression();
@@ -78,8 +82,6 @@ namespace Manager.API
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Airline API V1");
             });
-            app.UseCors("CorsPolicy");
-
         }
 
         private void RegisterDependencies(IServiceCollection services)
@@ -151,13 +153,21 @@ namespace Manager.API
 
         private void RegisterCorsConfiguration(IServiceCollection services)
         {
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy",
+            //        builder => builder.AllowAnyOrigin()
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        .AllowCredentials());
+            //});
+
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",
+                options.AddPolicy("AllowAnyOrigin",
                     builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
+                    .AllowAnyHeader());
             });
         }
     }
