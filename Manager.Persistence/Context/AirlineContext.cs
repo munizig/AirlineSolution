@@ -15,6 +15,7 @@ namespace Manager.Persistence.Context
 
         public virtual DbSet<Airplane> Airplane { get; set; }
         public virtual DbSet<AirplaneModel> AirplaneModel { get; set; }
+
         public IConfiguration Configuration { get; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

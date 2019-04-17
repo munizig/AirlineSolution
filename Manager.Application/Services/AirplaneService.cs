@@ -30,7 +30,8 @@ namespace Manager.Application.Services
 
         public List<AirplaneContractResponse> GetAll()
         {
-            return Mapper.Map<List<AirplaneContractResponse>>(AirplaneRepository.GetAll().ToList());
+            var result = AirplaneRepository.GetAll().ToList();
+            return Mapper.Map<List<AirplaneContractResponse>>(result);
         }
 
         public AirplaneContractResponse Create(AirplaneContractRequest airplane)

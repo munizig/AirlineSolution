@@ -9,7 +9,9 @@ namespace Manager.Application.AutoMapper
     {
         public AirplaneMappingProfile()
         {
-            CreateMap<Airplane, AirplaneContractResponse>();
+            CreateMap<Airplane, AirplaneContractResponse>()
+                .ForMember(dest=> dest.ModelName, opt => opt.MapFrom(src => src.Model.Name));
+
             CreateMap<AirplaneContractRequest, Airplane>()
                 .ConstructUsing(a => new Airplane()
                 {
