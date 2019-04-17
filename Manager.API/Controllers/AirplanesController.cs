@@ -8,7 +8,7 @@ namespace Manager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AirplanesController : BaseController
+    public class AirplanesController : ControllerBase
     {
         public IAirplaneService AirplaneService { get; }
 
