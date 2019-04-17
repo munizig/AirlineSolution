@@ -14,7 +14,6 @@ namespace Manager.Persistence.Context
         }
 
         public virtual DbSet<Airplane> Airplane { get; set; }
-        public virtual DbSet<AirplaneModel> AirplaneModel { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -41,21 +40,12 @@ namespace Manager.Persistence.Context
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.HasOne(d => d.Model)
-                    .WithMany(p => p.Airplane)
-                    .HasForeignKey(d => d.ModelId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Airplane_AirplaneModel");
-
-                entity.Ignore(x => x.CreateDateLog);
-            });
-
-            modelBuilder.Entity<AirplaneModel>(entity =>
-            {
-                entity.Property(e => e.Name)
+                entity.Property(e => e.Model)
                     .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false);
+
+                entity.Ignore(x => x.CreateDateLog);
             });
         }
     }

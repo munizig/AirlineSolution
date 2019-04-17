@@ -25,7 +25,6 @@ export class ManageAirplaneComponent implements OnInit {
   }
 
   public manageAirplaneRecord = function (event) {
-    debugger;
     this.airplaneCreated.emit(this.airplaneInfo);
     this.clearAirplaneInfo();
   }

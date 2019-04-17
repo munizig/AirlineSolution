@@ -1,7 +1,7 @@
 USE [Airline]
 GO
 
-/****** Object:  Table [dbo].[Airplane]    Script Date: 4/9/2019 3:22:47 AM ******/
+/****** Object:  Table [dbo].[Airplane]    Script Date: 4/17/2019 5:51:53 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,9 +11,9 @@ GO
 CREATE TABLE [dbo].[Airplane](
 	[Id] [uniqueidentifier] NOT NULL,
 	[Code] [varchar](20) NOT NULL,
-	[ModelId] [smallint] NOT NULL,
 	[PassengersQuantity] [smallint] NOT NULL,
 	[CreateDateLog] [datetime] NOT NULL,
+	[Model] [varchar](20) NOT NULL,
  CONSTRAINT [PK_Airplane] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -27,10 +27,4 @@ GO
 ALTER TABLE [dbo].[Airplane] ADD  CONSTRAINT [DF_Airplane_CreateDateLog]  DEFAULT (getdate()) FOR [CreateDateLog]
 GO
 
-ALTER TABLE [dbo].[Airplane]  WITH CHECK ADD  CONSTRAINT [FK_Airplane_AirplaneModel] FOREIGN KEY([ModelId])
-REFERENCES [dbo].[AirplaneModel] ([Id])
-GO
-
-ALTER TABLE [dbo].[Airplane] CHECK CONSTRAINT [FK_Airplane_AirplaneModel]
-GO
 

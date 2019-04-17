@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
   }
 
   public manageAirplane = function (airplane: Airplane) {
-    debugger;
     let airplaneExisting: Airplane;
     airplaneExisting = _.find(this.airplaneData, (el => el.id === airplane.id));
 

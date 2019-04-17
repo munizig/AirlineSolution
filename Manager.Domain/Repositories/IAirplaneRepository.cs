@@ -8,6 +8,5 @@ namespace Manager.Domain.Repositories
     public interface IAirplaneRepository : IRepository<Airplane>
     {
         Airplane GetByCode(string code);
-        IEnumerable<Airplane> GetAll();
     }
 }

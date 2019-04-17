@@ -11,8 +11,8 @@ namespace Manager.Application.Validations
     {
         public AirplaneValidator()
         {
-            RuleFor(x => x.Code).NotEmpty();
-            RuleFor(x => x.ModelId).NotEmpty();
+            RuleFor(x => x.Code).NotEmpty().MinimumLength(2);
+            RuleFor(x => x.Model).NotEmpty().MinimumLength(2);
             RuleFor(x => x.PassengersQuantity).NotEmpty().GreaterThan((short)0);
         }
     }

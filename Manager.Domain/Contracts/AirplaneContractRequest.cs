@@ -17,7 +17,7 @@ namespace Manager.Domain.Contracts
 
         [Required(ErrorMessage = "The Model is required.")]
         [DisplayName("Model")]
-        public short ModelId { get; set; }
+        public string Model { get; set; }
 
         [DisplayName("Passengers quantity")]
         [Required(ErrorMessage = "The Passengers Quantity is required.")]

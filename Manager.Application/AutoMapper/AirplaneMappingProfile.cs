@@ -9,15 +9,15 @@ namespace Manager.Application.AutoMapper
     {
         public AirplaneMappingProfile()
         {
-            CreateMap<Airplane, AirplaneContractResponse>()
-                .ForMember(dest=> dest.ModelName, opt => opt.MapFrom(src => src.Model.Name));
+            CreateMap<Airplane, AirplaneContractResponse>();
+                //.ForMember(dest=> dest.ModelName, opt => opt.MapFrom(src => src.Model.Name));
 
             CreateMap<AirplaneContractRequest, Airplane>()
                 .ConstructUsing(a => new Airplane()
                 {
                     Id = a.Id,
                     Code = a.Code,
-                    ModelId = a.ModelId,
+                    Model = a.Model,
                     PassengersQuantity = a.PassengersQuantity
                 });
         }

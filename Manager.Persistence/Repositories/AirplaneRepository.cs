@@ -2,7 +2,6 @@
 using Manager.Domain.Repositories;
 using Manager.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Manager.Persistence.Repositories
@@ -21,11 +20,6 @@ namespace Manager.Persistence.Repositories
                 return DbSet.AsNoTracking().FirstOrDefault(x => x.Code.ToUpper() == code);
 
             return null;
-        }
-
-        public IEnumerable<Airplane> GetAll()
-        {
-            return AirlineContext.Airplane.Include(x => x.Model).ToList();
         }
     }
 }
