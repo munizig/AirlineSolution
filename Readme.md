@@ -22,13 +22,12 @@ To know more about how to setup your enviroment visit the [Microsoft .NET Downlo
 - .NET Core Native DI
 - AutoMapper
 - FluentValidator
-- MediatR
-- Swagger UI
 - Brotli Compression
 - Serilog
+- Swagger UI
 
 #Front-end
-- Angular 6
+- Angular 7 with Bootstrap
 
 
 ## Architecture:
@@ -43,7 +42,10 @@ To know more about how to setup your enviroment visit the [Microsoft .NET Downlo
 
 **v1.0 - 04/16/2019**
 - First version docummented
-- All back end done
+- All backend done
+
+**v1.1 - 04/17/2019
+- Front end implemented with bootstrap
 
 
 ## About the developer:
